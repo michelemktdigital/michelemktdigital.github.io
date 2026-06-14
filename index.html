@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Michele Vieira Lima — Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ─────────────────────────────── */
+    :root {
+      --coral:    #E8613A;
+      --clay:     #C44E2B;
+      --sand:     #F5EFE6;
+      --ink:      #1C1714;
+      --muted:    #7A6E68;
+      --cream:    #FDFAF6;
+      --sage:     #5A7A5F;
+      --lilac:    #9B7FC1;
+      --yellow:   #E8C547;
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  7rem;
+
+      --radius: 4px;
+      --radius-lg: 12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem var(--space-md);
+      background: rgba(253, 250, 246, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,23,20,0.07);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--coral); }
+
+    /* ── HERO ───────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--space-xl) var(--space-lg) var(--space-xl) var(--space-md);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--coral);
+    }
+
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: var(--space-md);
+      line-height: 1.4;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 42ch;
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--coral);
+      color: #fff;
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      width: fit-content;
+    }
+
+    .hero-cta:hover {
+      background: var(--clay);
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-graphic {
+      width: 320px;
+      height: 320px;
+      position: relative;
+    }
+
+    /* Círculos decorativos como "assinatura" visual */
+    .circle-outer {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral) 0%, var(--yellow) 60%, var(--lilac) 100%);
+      opacity: 0.15;
+      position: absolute;
+      top: 0; left: 0;
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .circle-mid {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: var(--coral);
+      opacity: 0.12;
+      position: absolute;
+      top: 50px; left: 50px;
+      animation: pulse 6s ease-in-out infinite 1s;
+    }
+
+    .circle-inner {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: var(--coral);
+      opacity: 0.25;
+      position: absolute;
+      top: 95px; left: 95px;
+      animation: pulse 6s ease-in-out infinite 2s;
+    }
+
+    .hero-initials {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--coral);
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .hero-tags {
+      position: absolute;
+      bottom: var(--space-md);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      background: #fff;
+      color: var(--muted);
+      border: 1px solid rgba(28,23,20,0.1);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    /* ── SECTION BASE ───────────────────────── */
+    section {
+      padding: var(--space-xl) var(--space-md);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--coral);
+    }
+
+    /* ── DIVIDER ────────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(28,23,20,0.08);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── SOBRE ──────────────────────────────── */
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .sobre-text p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .sobre-text p strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .sobre-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sobre-card {
+      background: var(--sand);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      border-left: 3px solid var(--coral);
+    }
+
+    .sobre-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .sobre-card h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .sobre-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── PROJETOS ───────────────────────────── */
+    #projetos {
+      padding-top: var(--space-xl);
+      padding-bottom: var(--space-xl);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .projeto-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--sand);
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .projeto-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(28,23,20,0.12);
+    }
+
+    .projeto-thumb {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projeto-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.08);
+    }
+
+    .thumb-milenarts { background: linear-gradient(135deg, #C44E2B, #E8C547); color: #fff; }
+    .thumb-casadosaber { background: linear-gradient(135deg, #2C5F8A, #5A7A5F); color: #fff; }
+    .thumb-ricardo { background: linear-gradient(135deg, #1C1714, #7A6E68); color: #fff; }
+    .thumb-stefanie { background: linear-gradient(135deg, #9B7FC1, #E8613A); color: #fff; }
+
+    .projeto-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .projeto-tipo {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.5rem;
+    }
+
+    .projeto-nome {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .projeto-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .projeto-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .projeto-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 100px;
+      background: rgba(232,97,58,0.1);
+      color: var(--coral);
+    }
+
+    /* ── FERRAMENTAS ────────────────────────── */
+    #ferramentas {
+      padding: var(--space-xl) var(--space-md);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ferramentas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .ferramenta-item {
+      background: var(--sand);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .ferramenta-item:hover { background: #EDE5D9; }
+
+    .ferramenta-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+    .ferramenta-nome {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .ferramenta-desc {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTATO ────────────────────────────── */
+    #contato {
+      background: var(--ink);
+      padding: var(--space-xl) var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    .contato-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .contato-texto .section-label { color: var(--yellow); }
+
+    .contato-titulo {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .contato-titulo em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--yellow);
+    }
+
+    .contato-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    .contato-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contato-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      text-decoration: none;
+      color: #fff;
+      transition: background 0.2s;
+    }
+
+    .contato-link:hover { background: rgba(255,255,255,0.11); }
+
+    .contato-link-icon {
+      font-size: 1.4rem;
+      width: 2.5rem;
+      text-align: center;
+    }
+
+    .contato-link-info strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .contato-link-info span {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── FOOTER ─────────────────────────────── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── RESPONSIVO ─────────────────────────── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 2rem 1.2rem 2rem; text-align: center; }
+      .hero-bio { max-width: 100%; }
+      .hero-cta { margin: 0 auto; }
+      .hero-right { height: 280px; }
+      .hero-graphic { width: 220px; height: 220px; }
+      .circle-outer { width: 220px; height: 220px; }
+      .circle-mid { width: 150px; height: 150px; top: 35px; left: 35px; }
+      .circle-inner { width: 90px; height: 90px; top: 65px; left: 65px; }
+      .hero-initials { font-size: 3.5rem; }
+      .sobre-grid { grid-template-columns: 1fr; }
+      .contato-inner { grid-template-columns: 1fr; }
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 3.5rem 1.2rem; }
+      #projetos, #ferramentas { padding: 3.5rem 1.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .circle-outer, .circle-mid, .circle-inner { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Michele Lima</a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#ferramentas">Ferramentas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Portfólio — Marketing & Conteúdo</p>
+      <h1 class="hero-name">Michele<br><em>Vieira Lima</em></h1>
+      <p class="hero-tagline">Comunicação que conecta.<br>Conteúdo que educa.</p>
+      <p class="hero-bio">
+        Estudante de Marketing Digital com formação em Pedagogia. Crio conteúdo, gerencio redes sociais e desenvolvo identidades visuais com um olhar que vem de onde poucos esperam — da sala de aula.
+      </p>
+      <a href="#projetos" class="hero-cta">Ver projetos →</a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-graphic">
+        <div class="circle-outer"></div>
+        <div class="circle-mid"></div>
+        <div class="circle-inner"></div>
+        <span class="hero-initials">MVL</span>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">Social Media</span>
+        <span class="tag">Conteúdo</span>
+        <span class="tag">Design</span>
+        <span class="tag">Marketing Digital</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <p class="section-label">Quem sou</p>
+    <h2 class="section-title">Educação e comunicação<br><em>sempre andaram juntas</em></h2>
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <p>
+          Sou de Maranhão, moro em Pelotas e carrego comigo uma herança criativa: minha avó foi artesã reconhecida pelo Ministério da Cultura e pela FUNARTE, e minha mãe mantém viva essa tradição com o <strong>Milenarts Ateliê</strong>. Foi cuidando desse negócio de longe que mergulhei de vez em marketing digital.
+        </p>
+        <p>
+          Formada em Pedagogia e cursando o 4º semestre de <strong>Marketing Digital na UniRitter</strong>, entendo comunicação como prática pedagógica: conteúdo que não ensina, não conecta, não converte. Esse é o fio que une tudo o que faço.
+        </p>
+        <p>
+          Trabalho com criação de conteúdo, gestão de redes sociais, design gráfico e identidade visual — sempre com atenção ao propósito por trás de cada peça.
+        </p>
+      </div>
+      <div class="sobre-cards">
+        <div class="sobre-card">
+          <div class="sobre-card-icon">🎓</div>
+          <h4>Dupla formação</h4>
+          <p>Pedagogia concluída + Marketing Digital em andamento. A combinação é intencional.</p>
+        </div>
+        <div class="sobre-card">
+          <div class="sobre-card-icon">🪡</div>
+          <h4>Raiz artesanal</h4>
+          <p>Cresci cercada de arte popular e cultura regional. Isso molda o olhar que trago para o design e para o conteúdo.</p>
+        </div>
+        <div class="sobre-card">
+          <div class="sobre-card-icon">📍</div>
+          <h4>Pelotas — RS</h4>
+          <p>Disponível para atuação presencial em Pelotas e remota para qualquer lugar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <p class="section-label">Projetos</p>
+    <h2 class="section-title">O que já <em>construí</em></h2>
+    <div class="projetos-grid">
+
+      <div class="projeto-card">
+        <div class="projeto-thumb thumb-milenarts">MA</div>
+        <div class="projeto-body">
+          <p class="projeto-tipo">Gestão de Redes Sociais — em andamento</p>
+          <h3 class="projeto-nome">Milenarts Ateliê</h3>
+          <p class="projeto-desc">
+            Gestão completa da comunicação digital do ateliê artesanal da minha mãe, baseado em Barra do Corda (MA), operada remotamente desde janeiro de 2026. Planejamento editorial, criação de conteúdo, edição de vídeos, design de peças, geração de imagens com IA e análise de métricas. Inclui site/link-in-bio desenvolvido e hospedado no GitHub Pages.
+          </p>
+          <div class="projeto-tags">
+            <span class="projeto-tag">Social Media</span>
+            <span class="projeto-tag">Canva</span>
+            <span class="projeto-tag">CapCut</span>
+            <span class="projeto-tag">Meta Insights</span>
+            <span class="projeto-tag">GitHub Pages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-thumb thumb-casadosaber">CS</div>
+        <div class="projeto-body">
+          <p class="projeto-tipo">Estudo de Caso — Branding</p>
+          <h3 class="projeto-nome">Casa do Saber</h3>
+          <p class="projeto-desc">
+            Estudo autoral de identidade visual e posicionamento de marca para a Casa do Saber. Projeto desenvolvido como exercício prático de aplicação de conceitos de design, tipografia e branding. Integra o portfólio pessoal de aprendizado em design.
+          </p>
+          <div class="projeto-tags">
+            <span class="projeto-tag">Branding</span>
+            <span class="projeto-tag">Identidade Visual</span>
+            <span class="projeto-tag">Canva</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-thumb thumb-ricardo">RK</div>
+        <div class="projeto-body">
+          <p class="projeto-tipo">Estudo de Caso — Branding</p>
+          <h3 class="projeto-nome">Ricardo Kian</h3>
+          <p class="projeto-desc">
+            Estudo de identidade visual para Ricardo Kian. Exploração de paleta, tipografia e aplicações de marca com foco em posicionamento e consistência visual. Parte da série de projetos autorais criados como laboratório de design.
+          </p>
+          <div class="projeto-tags">
+            <span class="projeto-tag">Branding</span>
+            <span class="projeto-tag">Identidade Visual</span>
+            <span class="projeto-tag">Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projeto-card">
+        <div class="projeto-thumb thumb-stefanie">SN</div>
+        <div class="projeto-body">
+          <p class="projeto-tipo">Estudo de Caso — Branding</p>
+          <h3 class="projeto-nome">Stefanie Nunes</h3>
+          <p class="projeto-desc">
+            Estudo de marca pessoal e identidade visual para Stefanie Nunes. Projeto com ênfase na construção de marca autoral, explorando tom de voz visual, paleta e aplicações para redes sociais.
+          </p>
+          <div class="projeto-tags">
+            <span class="projeto-tag">Marca Pessoal</span>
+            <span class="projeto-tag">Identidade Visual</span>
+            <span class="projeto-tag">Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FERRAMENTAS -->
+  <section id="ferramentas">
+    <p class="section-label">Ferramentas</p>
+    <h2 class="section-title">Com o que <em>trabalho</em></h2>
+    <div class="ferramentas-grid">
+      <div class="ferramenta-item">
+        <div class="ferramenta-icon">🎨</div>
+        <p class="ferramenta-nome">Canva</p>
+        <p class="ferramenta-desc">Design gráfico e peças visuais</p>
+      </div>
+      <div class="ferramenta-item">
+        <div class="ferramenta-icon">🎬</div>
+        <p class="ferramenta-nome">CapCut</p>
+        <p class="ferramenta-desc">Edição de vídeos e reels</p>
+      </div>
+      <div class="ferramenta-item">
+        <div class="ferramenta-icon">📊</div>
+        <p class="ferramenta-nome">Meta Business Suite</p>
+        <p class="ferramenta-desc">Gestão e análise de Instagram</p>
+      </div>
+      <div class="ferramenta-item">
+        <div class="ferramenta-icon">🤖</div>
+        <p class="ferramenta-nome">Gemini</p>
+        <p class="ferramenta-desc">Geração de imagens com IA</p>
+      </div>
+      <div class="ferramenta-item">
+        <div class="ferramenta-icon">💻</div>
+        <p class="ferramenta-nome">GitHub Pages</p>
+        <p class="ferramenta-desc">Hospedagem de sites estáticos</p>
+      </div>
+      <div class="ferramenta-item">
+        <div class="ferramenta-icon">📝</div>
+        <p class="ferramenta-nome">Pacote Office</p>
+        <p class="ferramenta-desc">Word, Excel, PowerPoint</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <div id="contato">
+    <div class="contato-inner">
+      <div class="contato-texto">
+        <p class="section-label">Contato</p>
+        <h2 class="contato-titulo">Vamos conversar<br><em>sobre o seu projeto?</em></h2>
+        <p class="contato-sub">Estou disponível para vagas, freelas e colaborações em Pelotas/RS e remotamente.</p>
+      </div>
+      <div class="contato-links">
+        <a href="mailto:mick_prof@hotmail.com" class="contato-link">
+          <span class="contato-link-icon">✉️</span>
+          <div class="contato-link-info">
+            <strong>E-mail</strong>
+            <span>mick_prof@hotmail.com</span>
+          </div>
+        </a>
+        <a href="tel:+5553997068869" class="contato-link">
+          <span class="contato-link-icon">📱</span>
+          <div class="contato-link-info">
+            <strong>WhatsApp / Telefone</strong>
+            <span>(53) 99706-8869</span>
+          </div>
+        </a>
+        <a href="https://milenartsatelie.github.io/milenartsatelie/" target="_blank" rel="noopener" class="contato-link">
+          <span class="contato-link-icon">🔗</span>
+          <div class="contato-link-info">
+            <strong>Projeto Milenarts</strong>
+            <span>Ver site ao vivo →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Michele Vieira Lima — Pelotas, RS</p>
+  </footer>
+
+</body>
+</html>
