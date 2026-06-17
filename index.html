@@ -376,29 +376,30 @@
     }
 
     .projeto-thumb {
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
+      height: 220px;
       position: relative;
       overflow: hidden;
+    }
+
+    .projeto-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .projeto-card:hover .projeto-thumb img {
+      transform: scale(1.04);
     }
 
     .projeto-thumb::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.08);
+      background: linear-gradient(to bottom, transparent 50%, rgba(28,23,20,0.18) 100%);
     }
-
-    .thumb-milenarts { background: linear-gradient(135deg, #C44E2B, #E8C547); color: #fff; }
-    .thumb-casadosaber { background: linear-gradient(135deg, #2C5F8A, #5A7A5F); color: #fff; }
-    .thumb-ricardo { background: linear-gradient(135deg, #1C1714, #7A6E68); color: #fff; }
-    .thumb-stefanie { background: linear-gradient(135deg, #9B7FC1, #E8613A); color: #fff; }
 
     .projeto-body {
       padding: 1.5rem;
@@ -692,7 +693,9 @@
     <div class="projetos-grid">
 
       <div class="projeto-card">
-        <div class="projeto-thumb thumb-milenarts">MA</div>
+        <div class="projeto-thumb">
+          <img src="milenarts.png" alt="Milenarts Ateliê — banco de imagens do projeto" />
+        </div>
         <div class="projeto-body">
           <p class="projeto-tipo">Gestão de Redes Sociais — em andamento</p>
           <h3 class="projeto-nome">Milenarts Ateliê</h3>
@@ -710,7 +713,9 @@
       </div>
 
       <div class="projeto-card">
-        <div class="projeto-thumb thumb-casadosaber">CS</div>
+        <div class="projeto-thumb">
+          <img src="casa_do_saber.png" alt="Casa do Saber — estudo de caso de identidade visual" />
+        </div>
         <div class="projeto-body">
           <p class="projeto-tipo">Estudo de Caso — Branding</p>
           <h3 class="projeto-nome">Casa do Saber</h3>
@@ -726,7 +731,9 @@
       </div>
 
       <div class="projeto-card">
-        <div class="projeto-thumb thumb-ricardo">RK</div>
+        <div class="projeto-thumb">
+          <img src="ricardo_kian.png" alt="Ricardo Kian — estudo de caso de identidade visual" />
+        </div>
         <div class="projeto-body">
           <p class="projeto-tipo">Estudo de Caso — Branding</p>
           <h3 class="projeto-nome">Ricardo Kian</h3>
@@ -742,7 +749,9 @@
       </div>
 
       <div class="projeto-card">
-        <div class="projeto-thumb thumb-stefanie">SN</div>
+        <div class="projeto-thumb">
+          <img src="stefanie_nunes.png" alt="Stefanie Nunes Psicopedagoga — estudo de caso de identidade visual" />
+        </div>
         <div class="projeto-body">
           <p class="projeto-tipo">Estudo de Caso — Branding</p>
           <h3 class="projeto-nome">Stefanie Nunes</h3>
