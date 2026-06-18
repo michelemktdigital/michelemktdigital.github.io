@@ -166,62 +166,18 @@
     .hero-right {
       background: var(--sand);
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       position: relative;
       overflow: hidden;
     }
 
-    .hero-graphic {
-      width: 320px;
-      height: 320px;
-      position: relative;
-    }
-
-    /* Círculos decorativos como "assinatura" visual */
-    .circle-outer {
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--coral) 0%, var(--yellow) 60%, var(--lilac) 100%);
-      opacity: 0.15;
-      position: absolute;
-      top: 0; left: 0;
-      animation: pulse 6s ease-in-out infinite;
-    }
-
-    .circle-mid {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: var(--coral);
-      opacity: 0.12;
-      position: absolute;
-      top: 50px; left: 50px;
-      animation: pulse 6s ease-in-out infinite 1s;
-    }
-
-    .circle-inner {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: var(--coral);
-      opacity: 0.25;
-      position: absolute;
-      top: 95px; left: 95px;
-      animation: pulse 6s ease-in-out infinite 2s;
-    }
-
-    .hero-initials {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--font-display);
-      font-size: 5rem;
-      font-weight: 700;
-      color: var(--coral);
-      letter-spacing: -0.05em;
-      line-height: 1;
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     .hero-tags {
@@ -233,6 +189,7 @@
       gap: 0.5rem;
       flex-wrap: wrap;
       justify-content: center;
+      z-index: 2;
     }
 
     .tag {
@@ -242,14 +199,19 @@
       text-transform: uppercase;
       padding: 0.3rem 0.8rem;
       border-radius: 100px;
-      background: #fff;
+      background: rgba(253,250,246,0.92);
       color: var(--muted);
       border: 1px solid rgba(28,23,20,0.1);
+      backdrop-filter: blur(4px);
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to top, rgba(245,239,230,0.85) 0%, transparent 100%);
+      pointer-events: none;
     }
 
     /* ── SECTION BASE ───────────────────────── */
@@ -587,12 +549,7 @@
       .hero-left { padding: 2rem 1.2rem 2rem; text-align: center; }
       .hero-bio { max-width: 100%; }
       .hero-cta { margin: 0 auto; }
-      .hero-right { height: 280px; }
-      .hero-graphic { width: 220px; height: 220px; }
-      .circle-outer { width: 220px; height: 220px; }
-      .circle-mid { width: 150px; height: 150px; top: 35px; left: 35px; }
-      .circle-inner { width: 90px; height: 90px; top: 65px; left: 65px; }
-      .hero-initials { font-size: 3.5rem; }
+      .hero-right { height: 380px; }
       .sobre-grid { grid-template-columns: 1fr; }
       .contato-inner { grid-template-columns: 1fr; }
       nav { padding: 1rem; }
@@ -631,12 +588,7 @@
       <a href="#projetos" class="hero-cta">Ver projetos →</a>
     </div>
     <div class="hero-right">
-      <div class="hero-graphic">
-        <div class="circle-outer"></div>
-        <div class="circle-mid"></div>
-        <div class="circle-inner"></div>
-        <span class="hero-initials">MVL</span>
-      </div>
+      <img src="foto_michele.png" alt="Michele Vieira Lima" class="hero-photo" />
       <div class="hero-tags">
         <span class="tag">Social Media</span>
         <span class="tag">Conteúdo</span>
